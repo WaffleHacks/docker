@@ -19,7 +19,7 @@ coredns: coredns-src
 	cp coredns-src/coredns ./coredns
 
 coredns-src:
-	git clone git@github.com:coredns/coredns.git coredns-src
+	git clone https://github.com/coredns/coredns.git coredns-src
 
 .PHONY: clean
 clean:
