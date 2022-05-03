@@ -1,4 +1,4 @@
-echo > ./Corefile << EOF
+cat > ./Corefile << EOF
 . {
   redis . {
     address $REDIS_URL

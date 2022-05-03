@@ -1,5 +1,4 @@
 VERSION=v1.9.1
-REDIS_PLUGIN=github.com/WaffleHacks/coredns-redis
 
 .PHONY: all
 all: build publish
@@ -15,9 +14,9 @@ publish:
 	docker push wafflehacks/dns:${VERSION}
 
 coredns: coredns-src
-	echo "redis:${REDIS_PLUGIN}" >> coredns-src/plugin.cfg
-	make -C coredns-src -f Makefile.release LINUX_ARCH=amd64 build
-	cp coredns-src/build/linux/amd64/coredns ./coredns
+	cp plugin.cfg coredns-src/plugin.cfg
+	make -C coredns-src LINUX_ARCH=amd64 coredns
+	cp coredns-src/coredns ./coredns
 
 coredns-src:
 	git clone git@github.com:coredns/coredns.git coredns-src
